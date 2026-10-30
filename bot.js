@@ -1,3 +1,25 @@
+// --- Discord Token aus Render Environment Variablen laden ---
+const fs = require('fs');
+const path = require('path');
+
+const settingsPath = path.join(__dirname, 'BotData', 'Settings', 'Settings.json');
+if (process.env.DISCORD_TOKEN) {
+    try {
+        let settings = {};
+        if (fs.existsSync(settingsPath)) {
+            settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+        }
+        // Trägt den Token dynamisch ein, den du bei Render hinterlegt hast
+        settings.token = process.env.DISCORD_TOKEN; 
+        
+        fs.mkdirSync(path.dirname(settingsPath), { recursive: true });
+        fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
+        console.log("[Setup] Discord Token erfolgreich aus Environment-Variablen geladen.");
+    } catch (e) {
+        console.error("[Setup] Konnte Settings.json nicht dynamisch aktualisieren:", e);
+    }
+}
+
 /* External Modules */
 const Discord = require("discord.js");
 const fs = require("fs");
