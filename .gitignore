@@ -1,0 +1,4 @@
+node_modules/
+BotData/Settings/Settings.json
+.env
+*.log

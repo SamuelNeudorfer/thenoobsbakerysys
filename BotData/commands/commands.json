@@ -1,0 +1,109 @@
+{
+  "command": [
+    {
+      "name": "help",
+      "actions": [
+        {
+          "name": "help menu",
+          "category": "Message",
+          "type": "Send Embed",
+          "fields": [
+            {
+              "name": "?help",
+              "value": "Shows this menu",
+              "inline": "true"
+            },
+            {
+              "name": "?kick [@user]",
+              "value": "Kick specified user",
+              "inline": "true"
+            },
+            {
+              "name": "?ban [@user]",
+              "value": "Ban specified user",
+              "inline": "true"
+            }
+          ],
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "1FFF57",
+          "title": "Help Menu",
+          "url": "",
+          "authorname": "${dbsVars.guild.name}",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "Commands listed below. Proceed with caution. Commands may interfere with gameplay.",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "game",
+      "perms": [],
+      "actions": [
+        {
+          "name": "show info",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.DefaultChannel.id}",
+          "messagetext": "Command Author: ${dbsVars.CommandAuthor.displayName}\nTagged author: <@${dbsVars.CommandAuthor.id}>\nYou can insert more values by clicking the \"Insert Variable\" button next to this field!",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "kick",
+      "actions": [
+        {
+          "name": "get kick name",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "kickuser",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "kick user",
+          "category": "User Action",
+          "type": "Kick User",
+          "messageActionRows": [],
+          "user": "${tempVars.kickuser}",
+          "reason": "kicked using bot command"
+        }
+      ]
+    },
+    {
+      "name": "ban",
+      "actions": [
+        {
+          "name": "get ban name",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "banuser",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "1"
+        },
+        {
+          "name": "ban user",
+          "category": "User Action",
+          "type": "Ban User",
+          "messageActionRows": [],
+          "user": "${tempVars.banuser}",
+          "reason": "banned using bot command",
+          "days": ""
+        }
+      ]
+    }
+  ]
+}

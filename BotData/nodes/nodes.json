@@ -1,0 +1,332 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "help",
+      "guid": "7942fe4c-dffa-4146-8cab-d254b3d80d5d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "37eda463-a170-44f9-af54-61378ffc9294"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 148,
+      "y": 188
+    },
+    {
+      "type": "command",
+      "name": "game",
+      "guid": "2224944a-561a-4fa1-824b-2f31ea37c836",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "5053a44d-4a5e-460a-974d-da0cc07aac7c"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 149,
+      "y": 325,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "help menu",
+      "guid": "37eda463-a170-44f9-af54-61378ffc9294",
+      "reactionFields": [],
+      "embedfields": [
+        {
+          "name": "?help",
+          "value": "Shows this menu",
+          "inline": "true"
+        },
+        {
+          "name": "?kick [@user]",
+          "value": "Kick specified user",
+          "inline": "true"
+        },
+        {
+          "name": "?ban [@user]",
+          "value": "Ban specified user",
+          "inline": "true"
+        }
+      ],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7942fe4c-dffa-4146-8cab-d254b3d80d5d"
+        }
+      ],
+      "x": 368,
+      "y": 171,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "1FFF57",
+        "Help Menu",
+        "",
+        "${dbsVars.guild.name}",
+        "",
+        "",
+        "Commands listed below. Proceed with caution. Commands may interfere with gameplay.",
+        "",
+        "",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "show info",
+      "guid": "5053a44d-4a5e-460a-974d-da0cc07aac7c",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2224944a-561a-4fa1-824b-2f31ea37c836"
+        }
+      ],
+      "x": 379,
+      "y": 314,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.DefaultChannel.id}",
+        "Command Author: ${dbsVars.CommandAuthor.displayName}\nTagged author: <@${dbsVars.CommandAuthor.id}>\nYou can insert more values by clicking the \"Insert Variable\" button next to this field!",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": []
+    },
+    {
+      "type": "command",
+      "name": "kick",
+      "guid": "d73562ed-f7d2-4378-875d-a4aa04e6eb36",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "58c333e1-900c-4c82-9f8a-9c39ceaabe8e"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 138,
+      "y": 449
+    },
+    {
+      "type": "response",
+      "name": "get kick name",
+      "guid": "58c333e1-900c-4c82-9f8a-9c39ceaabe8e",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "kickuser",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "2b6ca1a1-6e85-4b9e-96c8-dfe89cfddccf"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "d73562ed-f7d2-4378-875d-a4aa04e6eb36"
+        }
+      ],
+      "x": 350,
+      "y": 438,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "kickuser",
+        "Text",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "kick user",
+      "guid": "2b6ca1a1-6e85-4b9e-96c8-dfe89cfddccf",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "58c333e1-900c-4c82-9f8a-9c39ceaabe8e"
+        }
+      ],
+      "x": 546,
+      "y": 458,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "${tempVars.kickuser}",
+        "kicked using bot command"
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "ban",
+      "guid": "3e9a8aa1-67f2-48f5-8c20-e7ce47e1ed4a",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "3d3bfaa3-d69e-4763-8b22-31d973a4f342"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 146,
+      "y": 605
+    },
+    {
+      "type": "response",
+      "name": "get ban name",
+      "guid": "3d3bfaa3-d69e-4763-8b22-31d973a4f342",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "banuser",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "26c0036b-76cc-456e-926f-b14244489cac"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3e9a8aa1-67f2-48f5-8c20-e7ce47e1ed4a"
+        }
+      ],
+      "x": 346,
+      "y": 581,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "banuser",
+        "Text",
+        "temp",
+        "1"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "ban user",
+      "guid": "26c0036b-76cc-456e-926f-b14244489cac",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "3d3bfaa3-d69e-4763-8b22-31d973a4f342"
+        }
+      ],
+      "x": 548,
+      "y": 612,
+      "rtype": "User Action",
+      "rsubtype": "Ban User",
+      "formdata": [
+        "${tempVars.banuser}",
+        "banned using bot command",
+        ""
+      ],
+      "formnames": [
+        "user",
+        "reason",
+        "days"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    }
+  ]
+}
